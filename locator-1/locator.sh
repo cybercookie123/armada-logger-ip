@@ -170,25 +170,25 @@ fi
 
 
 if [[ $continent != "" ]]; then
-printf "\e[1;92m[*] IP Continent:\e[0m\e[1;77m %s\e[0m\n" $continent
+printf "\e[1;92m[*] IP continant:\e[0m\e[1;77m %s\e[0m\n" $continent
 fi
 ##
 
-country=$(grep -o 'Country:.*' iptracker.log | cut -d ">" -f3 | cut -d "&" -f1)
+country=$(grep -o 'pays:.*' iptracker.log | cut -d ">" -f3 | cut -d "&" -f1)
 if [[ $country != "" ]]; then
 printf "\e[1;92m[*] IP Country:\e[0m\e[1;77m %s\e[0m\n" $country
 fi
 ##
 
-state=$(grep -o "tracking lessimpt.*" iptracker.log | cut -d "<" -f1 | cut -d ">" -f2)
+state=$(grep -o "traque en court.*" iptracker.log | cut -d "<" -f1 | cut -d ">" -f2)
 if [[ $state != "" ]]; then
 printf "\e[1;92m[*] State:\e[0m\e[1;77m %s\e[0m\n" $state
 fi
 ##
-city=$(grep -o "City Location:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
+city=$(grep -o "ville,village:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
 
 if [[ $city != "" ]]; then
-printf "\e[1;92m[*] City Location:\e[0m\e[1;77m %s\e[0m\n" $city
+printf "\e[1;92m[*] ville,village:\e[0m\e[1;77m %s\e[0m\n" $city
 fi
 ##
 
@@ -198,13 +198,13 @@ printf "\e[1;92m[*] ISP:\e[0m\e[1;77m %s\e[0m\n" $isp
 fi
 ##
 
-as_number=$(grep -o "AS Number:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
+as_number=$(grep -o "nombre:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
 if [[ $as_number != "" ]]; then
 printf "\e[1;92m[*] AS Number:\e[0m\e[1;77m %s\e[0m\n" $as_number
 fi
 ##
 
-ip_speed=$(grep -o "IP Address Speed:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
+ip_speed=$(grep -o "vitesse de l'addresse ip:.*" iptracker.log | cut -d "<" -f3 | cut -d ">" -f2)
 if [[ $ip_speed != "" ]]; then
 printf "\e[1;92m[*] IP Address Speed:\e[0m\e[1;77m %s\e[0m\n" $ip_speed
 fi
@@ -261,7 +261,7 @@ rm -rf server/error.txt
 fi
 
 default_port=$(seq 1111 4444 | sort -R | head -n1)
-printf '\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choose a Port (Default:\e[0m\e[1;77m %s \e[0m\e[1;92m): \e[0m' $default_port
+printf '\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] Choisie un port bg (Default:\e[0m\e[1;77m %s \e[0m\e[1;92m): \e[0m' $default_port
 read port
 port="${port:-${default_port}}"
 serverx
@@ -355,7 +355,7 @@ checkfound
 
 start1() {
 printf "\n"
-printf "\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m]\e[0m\e[1;93m Serveo.net (SSH Tunelling, Best!)\e[0m\n"
+printf "\e[1;92m[\e[0m\e[1;77m01\e[0m\e[1;92m]\e[0m\e[1;93m Serveo.net (SSH Tuneling je te conseil!)\e[0m\n"
 printf "\e[1;92m[\e[0m\e[1;77m02\e[0m\e[1;92m]\e[0m\e[1;93m Ngrok\e[0m\n"
 default_option_server="1"
 read -p $'\n\e[1;92m[\e[0m\e[1;77m*\e[0m\e[1;92m] choisie un port forwarder: \e[0m\en' option_server
